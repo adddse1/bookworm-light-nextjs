@@ -2,20 +2,21 @@ import Pagination from "@components/Pagination";
 import config from "@config/config.json";
 import Base from "@layouts/Baseof";
 import { getSinglePage } from "@lib/contentParser";
+import { getTaxonomy } from "@lib/taxonomyParser";
 import Posts from "@partials/Posts";
 const { blog_folder } = config.settings;
 
 // blog pagination
-const BlogPagination = ({ posts, authors, currentPage, pagination }) => {
+const BlogPagination = ({ posts, authors, currentPage, pagination, categories }) => {
   const indexOfLastPost = currentPage * pagination;
   const indexOfFirstPost = indexOfLastPost - pagination;
   const totalPages = Math.ceil(posts.length / pagination);
   const currentPosts = posts.slice(indexOfFirstPost, indexOfLastPost);
 
   return (
-    <Base>
+    <Base categories={categories} >
       <section className="section">
-        <div className="container">
+        <div className="container">   
           <Posts className="mb-16" posts={currentPosts} authors={authors} />
           <Pagination totalPages={totalPages} currentPage={currentPage} />
         </div>
@@ -54,6 +55,7 @@ export const getStaticProps = async ({ params }) => {
   const { pagination } = config.settings;
   const posts = getSinglePage(`content/${blog_folder}`);
   const authors = getSinglePage("content/authors");
+  const categories = getTaxonomy(`content/${blog_folder}`, "categories");
 
   return {
     props: {
@@ -61,6 +63,7 @@ export const getStaticProps = async ({ params }) => {
       posts: posts,
       authors: authors,
       currentPage: currentPage,
+      categories: categories,
     },
   };
 };

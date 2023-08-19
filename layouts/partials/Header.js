@@ -1,11 +1,12 @@
 import Logo from "@components/Logo";
 import menu from "@config/menu.json";
 import SearchModal from "@layouts/partials/SearchModal";
+import { humanize, markdownify } from "@lib/utils/textConverter";
 import Link from "next/link";
 import React, { useEffect, useState } from "react";
 import { IoSearch } from "react-icons/io5";
 
-const Header = () => {
+const Header = ({categories}) => {
   // distructuring the main menu from menu object
   const { main } = menu;
 
@@ -116,6 +117,22 @@ const Header = () => {
             setSearchModal={setSearchModal}
           />
         </nav>
+        <div className="my-2">
+        <div className="container text-center">
+          <ul className="space-x-4 space-y-5">
+            {categories?.map((category, i) => (
+              <li key={`category-${i}`} className="inline-block">
+                <Link
+                  href={`/categories/${category}`}
+                  className="rounded-lg bg-theme-light px-4 py-2 text-dark transition hover:bg-primary hover:text-white"
+                >
+                  &#8226; {humanize(category)}
+                </Link>
+              </li>
+            ))}
+          </ul>
+        </div>
+        </div>
       </header>
     </>
   );
