@@ -79,3 +79,58 @@
 .content {
   @apply prose-blockquote:bg-theme-light prose max-w-none prose-headings:font-bold prose-h1:mb-4 prose-h1:text-h1-sm prose-h2:mb-4 prose-h2:mt-4 prose-h2:text-h2-sm prose-h3:mt-4 prose-h3:text-h3-sm prose-h4:mt-4 prose-h5:mb-4 prose-h6:mb-6 prose-blockquote:border-primary prose-blockquote:p-4 md:prose-h1:text-h1 md:prose-h2:text-h2 md:prose-h3:text-h3;
 }
+
+.gdpr-popup {
+  position: fixed;
+  bottom: 20px;
+  right: 20px;
+  background-color: #fff;
+  border: 1px solid #ccc;
+  padding: 10px 20px;
+  box-shadow:  0 3px 10px rgb(0 0 0 / 0.2);
+  max-width: 60%;
+  border-radius: 10px;
+  font-weight: bold;
+  @media screen and (max-width: 767px) {
+  max-width: 90%;
+  }
+}
+
+.gdpr-popup-content {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  p {
+    max-width: 80%;
+  }
+  @media screen and (max-width: 767px) {
+    justify-content: space-around;
+    align-items: center;
+    flex-direction: column;
+    gap: 50px;
+    text-align: center;
+    p {
+      max-width: 100%;
+    }
+    }
+  
+}
+
+.gdpr-popup-content button {
+  background-color: rgb(1 173 159 / var(--tw-bg-opacity));
+  color: #fff;
+  border: none;
+  padding: 10px 20px;
+  cursor: pointer;
+  border-radius: 8px;
+}
+
+.gdpr-popup-content button:hover {
+  background-color: #0056b3;
+}
+
+.gdpr-popup-link{
+  text-decoration: underline;
+  color: rgb(1 173 159 / var(--tw-bg-opacity));
+  font-weight: bolder;
+}
