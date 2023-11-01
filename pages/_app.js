@@ -46,10 +46,12 @@ const App = ({ Component, pageProps }) => {
           }}
         />
         {/* responsive meta */}
+
         <meta
           name="viewport"
           content="width=device-width, initial-scale=1, maximum-scale=5"
         />
+        <meta name="google-adsense-account" content="ca-pub-3864984419637405"></meta>
       </Head>
       <Component {...pageProps} />
       <GDPRPopup />
