@@ -33,6 +33,10 @@
     {
       "name": "Terms and Conditions",
       "url": "/terms-and-conditions"
+    },
+    {
+      "name": "Disclaimer",
+      "url": "/disclaimer"
     }
   ]
 }
